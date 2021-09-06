@@ -46,3 +46,17 @@ spec:
             name: aspnetapp
             port:
               number: 80
+      - path: /v2
+        pathType: Prefix
+        backend:
+          service:
+            name: aspnetapp
+            port:
+              number: 80
+      - path: /v3
+        pathType: Prefix
+        backend:
+          service:
+            name: aspnetapp
+            port:
+              number: 80

@@ -45,11 +45,9 @@ spec:
   rules:
   - http:
       paths:
-      - path:
-        pathType: Prefix
+      - path: /static(/|$)(.*)
         backend:
           service:
             name: aks-helloworld-one
             port: 
               number: 80
-        path: /static(/|$)(.*)
