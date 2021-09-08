@@ -152,7 +152,7 @@ stages:
 
 - stage: DeployProd
   displayName: Deploy prod
-  dependsOn: Build
+  dependsOn: End2EndTestDev
   jobs:
   - deployment: Deploy
     condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
