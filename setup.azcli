@@ -1,6 +1,7 @@
 az group create --name anbossar-aks-ws --location westeurope
-az aks create -n anbossaraksws -g anbossar-aks-ws --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
-az aks get-credentials -n anbossaraksws -g anbossar-aks-ws
+az aks delete -n anbossaraksws -g anbossar-aks-ws
+az aks create -n anbossaraksagw -g anbossar-aks-ws --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-cidr "10.2.0.0/16" --generate-ssh-keys
+az aks get-credentials -n anbossaraksagw -g anbossar-aks-ws
 
 NAMESPACE=default
 GITHUB_TOKEN=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

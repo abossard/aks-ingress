@@ -7,7 +7,8 @@ openssl x509 -req -sha256 -days 365 -in client.csr -CA ca.crt -CAkey ca.key -set
 kubectl create -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/docs/examples/http-svc.yaml
 kubectl apply -f .
 
-curl -k --resolve mydomain.com:443:51.124.145.169 https://mydomain.com/
-curl -k -E client.crt --key client.key --cacert ca.crt --resolve mydomain.com:443:51.124.145.169 https://mydomain.com/
+curl -k --resolve mydomain.com:443:52.236.155.205 https://mydomain.com/
+
+curl -k -E client.crt --key client.key --cacert ca.crt --resolve mydomain.com:443:52.236.155.205 https://mydomain.com/
 
 curl -k -E client.crt --key client.key --cacert ca.crt https://IP/

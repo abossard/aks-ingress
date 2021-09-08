@@ -46,6 +46,7 @@ spec:
   - http:
       paths:
       - path: /static(/|$)(.*)
+        pathType: Prefix
         backend:
           service:
             name: aks-helloworld-one
