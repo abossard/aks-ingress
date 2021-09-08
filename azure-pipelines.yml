@@ -140,8 +140,23 @@ stages:
               fi
               echo "##vso[task.setvariable variable=GITHUB_COMMENT]$message"
 
+- stage: DeployApp2
+  displayName: DeployApp2
+  jobs:
+  - job: DeployApp2
+    pool: $(vmImageName)
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo 'Hello world'
+
 - stage: End2EndTestDev
   displayName: End 2 End tests on Dev
+  dependsOn:
+    - DeployDev
+    - DeployApp2
   jobs:
   - job: End2EndTest
     displayName: End 2 End tests
