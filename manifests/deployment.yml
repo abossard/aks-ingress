@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: asptest 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: asptest
+  template:
+    metadata:
+      labels:
+        app: asptest 
+    spec:
+      containers:
+        - name: asptest 
+          image: anbossar.azurecr.io/asptest
+          ports:
+          - containerPort: 80
