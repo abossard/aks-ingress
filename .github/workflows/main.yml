@@ -46,11 +46,14 @@ jobs:
       with:
         creds: "${{ secrets.AZURE_CREDENTIALS }}"
 
+    - name: Set KUBECONFIG env variable
+      run: echo "KUBECONFIG=${RUNNER_TEMP}/kubeconfig-$(date +%s)" >> $GITHUB_ENV
+
     - name: Set AKS cluster context
       run: |
-        az aks get-credentials -n ${{ env.CLUSTER_NAME }} -g ${{ env.CLUSTER_RESOURCE_GROUP }}
+        az aks get-credentials -n {{ env.CLUSTER_NAME }} -g {{ env.CLUSTER_RESOURCE_GROUP }} -f ${KUBECONFIG}
+        kubelogin convert-kubeconfig -l azurecli  # this is required for me because of AAD and Azure RBAC integration
 
-    # Create namespace if doesn't exist
     - run: |
         kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
     
