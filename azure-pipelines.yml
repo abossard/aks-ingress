@@ -147,7 +147,7 @@ stages:
     displayName: End 2 End tests
     pool: $(vmImageName)
     steps:
-    - shell: echo "Running Tests"
+    - bash: echo "Running Tests"
       displayName: "Running Tests"
 
 - stage: DeployProd
