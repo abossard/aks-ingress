@@ -142,6 +142,7 @@ stages:
 
 - stage: DeployApp2
   displayName: DeployApp2
+  dependsOn: Build
   jobs:
   - job: DeployApp2
     pool: $(vmImageName)
