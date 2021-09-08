@@ -16,7 +16,7 @@ sudo chmod 755 /usr/local/bin/flux
 flux bootstrap github \
   --owner=abossard \
   --repository=aks-ingress \
-  --path=clusters/my-cluster \
+  --path=clusters/aks-ws \
   --personal
 
 # cleanup

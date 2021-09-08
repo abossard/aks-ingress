@@ -9,3 +9,5 @@ kubectl apply -f .
 
 curl -k --resolve mydomain.com:443:51.124.145.169 https://mydomain.com/
 curl -k -E client.crt --key client.key --cacert ca.crt --resolve mydomain.com:443:51.124.145.169 https://mydomain.com/
+
+curl -k -E client.crt --key client.key --cacert ca.crt https://IP/

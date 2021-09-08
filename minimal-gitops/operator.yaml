@@ -1,0 +1,22 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: gitops-cron
+  Namespace: gitops
+spec:
+  schedule: "*/5 * * * *"                                 
+  concurrencyPolicy: Forbid                               
+  jobTemplate:
+    spec:
+      backoffLimit: 0                                     
+      template:
+        spec:
+          restartPolicy: Never                            
+          serviceAccountName: gitops-serviceaccount       
+          containers:
+          - name: gitops-operator
+            image: gitopsbook/example-operator:v1.0       
+            command: [sh, -e, -c]                        
+            args:
+            - git clone https://github.com/gitopsbook/sample-app-deployment.git /tmp/example &&
+              find /tmp/example -name '*.yaml' -exec kubectl apply -f {} \;
