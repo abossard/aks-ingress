@@ -147,8 +147,11 @@ stages:
     displayName: End 2 End tests
     pool: $(vmImageName)
     steps:
-    - bash: echo "Running Tests"
-      displayName: "Running Tests"
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo 'Hello world'
 
 - stage: DeployProd
   displayName: Deploy prod
